@@ -6,3 +6,7 @@ output "hello" {
 output "traditional PR check" {
   value = "Hello world"
 }
+
+output "traditional " {
+  value = "Hello world"
+}
