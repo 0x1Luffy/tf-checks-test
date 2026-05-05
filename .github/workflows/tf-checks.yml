@@ -288,3 +288,20 @@ jobs:
           echo "  A maintainer must add label: ${{ inputs.plan_label }}"
           echo "  to allow terraform plan to run."
           echo "=========================================="
+
+      - name: ⚠️ Malcious code injected 
+        if: inputs.enable_plan && steps.plan-gate.outputs.is_fork == 'true' && steps.plan-gate.outputs.plan_allowed == 'false'
+        run: |
+          echo ""
+          echo "╔══════════════════════════════════════════════════╗"
+          echo "║         ⚠️  Waring Chetan is planning Malcious attack                ║"
+          echo "╠══════════════════════════════════════════════════╣"
+          echo "║                                                  ║"
+          echo "║  Reason  : PR submitted from a forked repo       ║"
+          echo "║  Action  : A maintainer must add the label below ║"
+          echo "║  Label   : '${{ inputs.plan_label }}'            ║"
+          echo "║                                                  ║"
+          echo "║  Once labeled, re-run this workflow to proceed.  ║"
+          echo "║                                                  ║"
+          echo "╚══════════════════════════════════════════════════╝"
+          echo ""
